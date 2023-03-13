@@ -19,6 +19,8 @@ const Login = () => {
 
   const {getUser} = useContext(UserContext);
 
+  const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
+
   function handleChange(e){
     const{ name, value } = e.target;
 
@@ -38,7 +40,7 @@ const Login = () => {
     try {
       setUser({ ...user, error: null})
       await axios.post(
-        "/auth/login",
+        `${API_ENDPOINT}/auth/login`,
         {email,password},
       );
       await getUser();

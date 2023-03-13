@@ -6,6 +6,8 @@ import axios from 'axios';
 import {BsEyeFill,BsEyeSlashFill} from 'react-icons/bs';
 import UserContext from '../../context/UserContextProvider';
 
+
+
 const Register = () => {
   let navigate = useNavigate();
   const [input, setInput] = useState(
@@ -24,6 +26,8 @@ const Register = () => {
 
   const {fName, lName, phone, email, password, error} = input;
 
+  const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
+
   function handleChange(e){
     const{name, value } = e.target;
     setInput({
@@ -40,7 +44,7 @@ const Register = () => {
     try {
       setInput({ ...input, error: null})
       await axios.post(
-        "/auth/register",
+        `${API_ENDPOINT}/auth/register`,
         {fName, lName, phone, email, password},
       );
       await getUser();

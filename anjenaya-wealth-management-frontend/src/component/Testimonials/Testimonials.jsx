@@ -3,7 +3,6 @@ import "./Testimonials.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 import SwiperCore, { Autoplay } from 'swiper';
-
 import "swiper/css";
 import "swiper/css/pagination";
 import { Fab } from '@mui/material';
@@ -15,6 +14,9 @@ import ReviewIcon from '../../assest/review.svg';
 import {MdDelete, MdEdit} from 'react-icons/md';
 
 SwiperCore.use([Autoplay]);
+
+
+const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 
 const Testimonials = () => {
   const {user} = useContext(UserContext);
@@ -49,7 +51,7 @@ const Testimonials = () => {
     try {
       setNote({...note,error: null,msg:null,dlt:null});
 
-      await axios.post("/review/create", {name, review});
+      await axios.post(`${API_ENDPOINT}/review/create`, {name, review});
 
       setNote({...note, name:"",review:"", msg: "Review Added Successfully"});
       getReviews();
@@ -63,7 +65,7 @@ const Testimonials = () => {
 
   const getReviews = async() => {
     try {
-      const result = await axios.get("/review/");
+      const result = await axios.get(`${API_ENDPOINT}/review/`);
       setData(result.data);
     } catch (error) {
       setNote({
@@ -77,7 +79,7 @@ const Testimonials = () => {
 
   const handleDelete = async(id) => {
     try {
-      await axios.delete(`/review/delete/${id}`);
+      await axios.delete(`${API_ENDPOINT}/review/delete/${id}`);
       setNote({...note, name:"",review:"", dlt: "Review Deleted Successfully"});
       window.location.reload();
     } catch (error) {
@@ -110,7 +112,7 @@ const Testimonials = () => {
 
   const Update = async(__id) => {
     try {
-      await axios.put(`/review/update/${__id}`, {name, review});
+      await axios.put(`${API_ENDPOINT}/review/update/${__id}`, {name, review});
       setNote({...note, name:"",review:"", msg: "Review Updated Successfully"});
       setUpdate(false);
       getReviews();

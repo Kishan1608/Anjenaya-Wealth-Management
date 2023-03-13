@@ -6,8 +6,10 @@ const UserContext = createContext();
 const UserContextProvider = (props) => {
     const[user, setUser] = useState(undefined);
 
+    const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
+
     async function getUser(){
-        const userRes = await axios.get("http://localhost:5000/auth/loggedIn");
+        const userRes = await axios.get(`${API_ENDPOINT}/auth/loggedIn`);
         setUser(userRes.data);
     }
 

@@ -8,6 +8,7 @@ import axios from 'axios';
 const Header = () => {
     const {user} = useContext(UserContext);
 
+    const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 
     const [isResponsive, setIsResponsive] = useState(false);
     function onMenuClick() {
@@ -15,7 +16,7 @@ const Header = () => {
     }
 
     const handleLogout = async() => {
-        await axios.get("/auth/logout");
+        await axios.get(`${API_ENDPOINT}/auth/logout`);
         window.location.reload();
     }
 
