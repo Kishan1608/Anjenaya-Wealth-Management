@@ -25,13 +25,6 @@ mongoose.connect(process.env.uri, {
 }).then(() => console.log('Connected to MongoDB')).catch(err=>console.log(err));
 
 
-app.all('*', function(req, res, next) {
-    const origin = cors.origin.includes(req.header('origin').toLowerCase()) ? req.headers.origin : cors.default;
-    res.header("Access-Control-Allow-Origin", origin);
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
-
 app.use("/auth", Auth);
 app.use("/review", Review); 
 
