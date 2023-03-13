@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Register.css'
 import Image from '../../assest/desktop-register.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {BsEyeFill,BsEyeSlashFill} from 'react-icons/bs';
+import UserContext from '../../context/UserContextProvider';
 
 const Register = () => {
   let navigate = useNavigate();
@@ -18,6 +19,8 @@ const Register = () => {
     }
   );
   const[passwordState, setPasswordState] = useState(false);
+
+  const {getUser} = useContext(UserContext);
 
   const {fName, lName, phone, email, password, error} = input;
 
@@ -40,7 +43,8 @@ const Register = () => {
         "/auth/register",
         {fName, lName, phone, email, password},
       );
-      navigate("/login");
+      await getUser();
+      navigate("/");
     } catch (error) {
       setInput({
         ...input,
