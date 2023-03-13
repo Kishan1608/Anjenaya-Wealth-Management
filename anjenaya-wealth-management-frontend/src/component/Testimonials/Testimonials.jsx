@@ -16,9 +16,8 @@ import {MdDelete, MdEdit} from 'react-icons/md';
 SwiperCore.use([Autoplay]);
 
 
-const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
-
 const Testimonials = () => {
+  const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
   const {user} = useContext(UserContext);
   const[note, setNote] = useState({
     name: "",
@@ -66,7 +65,11 @@ const Testimonials = () => {
   const getReviews = async() => {
     try {
       const result = await axios.get(`${API_ENDPOINT}/review/`);
-      setData(result.data);
+      if(result){
+         setData(result.data);
+      }else{
+        return
+      }
     } catch (error) {
       setNote({
         ...note,
