@@ -15,7 +15,7 @@ const UserContextProvider = (props) => {
 
     useEffect(() => {
         getUser();
-    }, []);
+    });
   return (
     <UserContext.Provider value={{user,getUser}}>{props.children}</UserContext.Provider>
   )
