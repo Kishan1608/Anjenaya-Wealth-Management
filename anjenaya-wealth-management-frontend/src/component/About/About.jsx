@@ -2,7 +2,6 @@ import React from "react";
 import "./About.css";
 import img1 from '../../assest/about-icon.svg';
 import CheckIcon from '@mui/icons-material/Check';
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 const About = () => {
     return(
@@ -19,9 +18,7 @@ const About = () => {
 
                 <div className="card">
                     <div className="image">
-                        <a href="https://icons8.com/illustrations/author/xFjpTYeUGo1J"></a>
                         <img src={img1} alt="404" height={300} width={300}/>
-                        <a href="https://icons8.com/illustrations"></a>
                     </div>
                     <div className="content">
                         Where banks give you just 5% returns , Our experts have given atleast <strong>15-18% return Pa</strong>                  

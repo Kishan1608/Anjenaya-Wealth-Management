@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import './Header.css'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Fab from '@mui/material/Fab'
 import UserContext from "../../context/UserContextProvider";
 import axios from 'axios';
@@ -22,12 +22,12 @@ const Header = () => {
     return(
         <div className="header">
             <div className="menu-icon" id="menu-icon" onClick={onMenuClick} >
-                <a><i class="fa fa-bars" aria-hidden="true"></i></a>
+                <i class="fa fa-bars" aria-hidden="true"></i>
             </div>
             <div className={`headerLeft${isResponsive?"responsive":""}`}>
                 <div className="number">
-                    <a className="nav-link" href="#">Home</a>
-                </div>
+                    <a className="nav-link" href="#home">Home</a>
+                </div> 
                 <div className="about">
                     <a className="nav-link" href="#about">About Us</a>
                 </div>

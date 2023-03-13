@@ -69,7 +69,7 @@ const Register = () => {
         <h2 className="tag">Anjenaya Wealth Management.</h2>
         </Link>
         <p className='tagline'>Securing your financial future, together.</p>
-        <img src={Image} width="70%"/>
+        <img src={Image} width="70%" alt='404'/>
       </div>
       <div className="form-box">
         <p className='text-top'>START FOR FREE</p>

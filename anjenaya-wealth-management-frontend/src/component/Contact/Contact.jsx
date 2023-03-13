@@ -18,7 +18,7 @@ const Contact = () => {
             <BsWhatsapp className="contact-icon" style={{color:'green'}}/>
             <h4>WhatsApp</h4>
             <h5>+91 8766921190</h5>
-            <a href="https://api.whatsapp.com/send?phone=8766921190" target="_blank">Send a message</a>
+            <a href="https://api.whatsapp.com/send?phone=8766921190" target="_blank" rel='noreferrer'>Send a message</a>
           </div>
           <div className="option call">
             <FiPhoneCall className='contact-icon' style={{color:'blue'}}/>
@@ -30,7 +30,7 @@ const Contact = () => {
             <MdOutlineEmail className='contact-icon' style={{color:'red'}}/>
             <h4>Email</h4>
             <h5>Anjenayawealth@gmail.com</h5>
-            <a href="mailto:Anjenayawealth@gmail.com" target="_blank">Send a message</a>
+            <a href="mailto:Anjenayawealth@gmail.com" target="_blank" rel='noreferrer'>Send a message</a>
           </div>
         </div>
       </div>

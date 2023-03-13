@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import "./Testimonials.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
@@ -28,11 +28,7 @@ const Testimonials = () => {
   });
   const[data, setData] = useState();
   const[update, setUpdate] = useState(false);
-
-  useEffect(() => {
-    getReviews();
-  },[])
-
+ 
   const{name, review, error, msg, dlt, id } = note;
   const{role} = user || {};
   
@@ -76,6 +72,8 @@ const Testimonials = () => {
       })
     }
   }
+
+  getReviews();
 
   const handleDelete = async(id) => {
     try {

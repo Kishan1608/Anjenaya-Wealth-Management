@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <section id='home'>
       <div className='content'>
-        <img src={Logo} height="150"/>
+        <img src={Logo} height="150" alt='404'/>
         <h2>Anjenaya Wealth Management</h2>
         <p>Unleash Your Potential with Us
         Maximize Your Returns, Minimize Your Risks
