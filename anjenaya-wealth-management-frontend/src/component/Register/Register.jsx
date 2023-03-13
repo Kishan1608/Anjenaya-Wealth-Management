@@ -46,6 +46,7 @@ const Register = () => {
       await axios.post(
         `${API_ENDPOINT}/auth/register`,
         {fName, lName, phone, email, password},
+        {withCredentials: true}
       );
       await getUser();
       navigate("/");

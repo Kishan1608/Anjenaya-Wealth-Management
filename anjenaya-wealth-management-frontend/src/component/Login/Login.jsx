@@ -42,6 +42,7 @@ const Login = () => {
       await axios.post(
         `${API_ENDPOINT}/auth/login`,
         {email,password},
+        {withCredentials: true}
       );
       await getUser();
       navigate('/');

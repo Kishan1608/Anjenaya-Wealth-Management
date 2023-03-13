@@ -50,7 +50,7 @@ const Testimonials = () => {
     try {
       setNote({...note,error: null,msg:null,dlt:null});
 
-      await axios.post(`${API_ENDPOINT}/review/create`, {name, review});
+      await axios.post(`${API_ENDPOINT}/review/create`, {name, review},{withCredentials:true});
 
       setNote({...note, name:"",review:"", msg: "Review Added Successfully"});
       getReviews();
