@@ -64,8 +64,8 @@ const Testimonials = () => {
 
   async function getReviews() {
     try {
-      const result = await axios.get(`${domain}/review/`);
-      setData1(result.data);
+      await axios.get(`${domain}/review/`)
+      .then(response => setData1(response.data))
     } catch (error) {
       setNote({
         ...note,
