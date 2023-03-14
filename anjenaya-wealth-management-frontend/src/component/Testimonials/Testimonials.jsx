@@ -27,7 +27,7 @@ const Testimonials = () => {
     dlt: null,
     id: null
   });
-  const[data, setData] = useState();
+  const[data1, setData1] = useState();
   const[update, setUpdate] = useState(false);
  
   const{name, review, error, msg, dlt, id } = note;
@@ -66,7 +66,7 @@ const Testimonials = () => {
     try {
       const result = await axios.get(`${API_ENDPOINT}/review/`);
       if(result){
-         setData(result.data);
+         setData1(result.data);
       }else{
         return
       }
@@ -147,7 +147,7 @@ const Testimonials = () => {
         }}
         
       >
-        {data?.map(({name, review, _id}, index) => {
+        {data1?.map(({name, review, _id}, index) => {
           return(
             <SwiperSlide key={index} className="testimonials">
               <h5 className='client__review'>{review}</h5>

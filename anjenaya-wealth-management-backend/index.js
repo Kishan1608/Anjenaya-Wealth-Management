@@ -1,4 +1,5 @@
 import express from 'express';
+import session from 'express-session';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import * as dotenv from "dotenv";
@@ -16,6 +17,19 @@ app.use(cors({
     credentials: true
 }))
 app.use(cookieParser())
+app.set("trust proxy", 1);
+app.use(
+    session({
+        resave: false,
+        saveUninitialized: false,
+        secret: 'session',
+        cookie: {
+            maxAge: 1000 * 60 * 60,
+            sameSite: "none",
+            secure: true
+        },
+    })
+);
 
 const PORT = process.env.PORT || 5000;
 

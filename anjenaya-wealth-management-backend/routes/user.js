@@ -43,8 +43,6 @@ router.post('/register', async( req, res ) => {
         }, process.env.JWT_SECRET);
 
         res.cookie("token", token, {httpOnly: true}).send();
-
-        return res.status(200).json({token: token});
         
     } catch (err) {
         res.status(500).json({error: err});
@@ -76,8 +74,6 @@ router.post('/login', async(req, res) => {
         }, process.env.JWT_SECRET);
 
         res.cookie("token", token,{httpOnly: true}).send();
-
-        return res.status(200).json({token: token});
     } catch (error) {
         console.log(error);
     }
