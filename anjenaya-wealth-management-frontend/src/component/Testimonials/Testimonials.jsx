@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./Testimonials.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
@@ -12,12 +12,12 @@ import {BsCheckCircleFill} from 'react-icons/bs';
 import UserContext from '../../context/UserContextProvider';
 import ReviewIcon from '../../assest/review.svg';
 import {MdDelete, MdEdit} from 'react-icons/md';
+import domain from '../../util/domain';
 
 SwiperCore.use([Autoplay]);
 
 
 const Testimonials = () => {
-  const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
   const {user} = useContext(UserContext);
   const[note, setNote] = useState({
     name: "",
@@ -50,7 +50,7 @@ const Testimonials = () => {
     try {
       setNote({...note,error: null,msg:null,dlt:null});
 
-      await axios.post(`${API_ENDPOINT}/review/create`, {name, review},{withCredentials:true});
+      await axios.post(`${domain}/review/create`, {name, review},{withCredentials:true});
 
       setNote({...note, name:"",review:"", msg: "Review Added Successfully"});
       getReviews();
@@ -62,14 +62,10 @@ const Testimonials = () => {
     }
   }
 
-  const getReviews = async() => {
+  async function getReviews() {
     try {
-      const result = await axios.get(`${API_ENDPOINT}/review/`);
-      if(result){
-         setData1(result.data);
-      }else{
-        return
-      }
+      const result = await axios.get(`${domain}/review/`);
+      setData1(result.data);
     } catch (error) {
       setNote({
         ...note,
@@ -78,11 +74,13 @@ const Testimonials = () => {
     }
   }
 
-  getReviews();
+  useEffect(() => {
+    getReviews();
+  });
 
   const handleDelete = async(id) => {
     try {
-      await axios.delete(`${API_ENDPOINT}/review/delete/${id}`);
+      await axios.delete(`${domain}/review/delete/${id}`);
       setNote({...note, name:"",review:"", dlt: "Review Deleted Successfully"});
       window.location.reload();
     } catch (error) {
@@ -115,7 +113,7 @@ const Testimonials = () => {
 
   const Update = async(__id) => {
     try {
-      await axios.put(`${API_ENDPOINT}/review/update/${__id}`, {name, review});
+      await axios.put(`${domain}/review/update/${__id}`, {name, review});
       setNote({...note, name:"",review:"", msg: "Review Updated Successfully"});
       setUpdate(false);
       getReviews();

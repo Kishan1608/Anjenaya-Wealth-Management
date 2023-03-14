@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {BsEyeFill,BsEyeSlashFill} from 'react-icons/bs';
 import UserContext from '../../context/UserContextProvider';
+import domain from '../../util/domain';
 
 
 
@@ -26,8 +27,6 @@ const Register = () => {
 
   const {fName, lName, phone, email, password, error} = input;
 
-  const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
-
   function handleChange(e){
     const{name, value } = e.target;
     setInput({
@@ -44,7 +43,7 @@ const Register = () => {
     try {
       setInput({ ...input, error: null})
       await axios.post(
-        `${API_ENDPOINT}/auth/register`,
+        `${domain}/auth/register`,
         {fName, lName, phone, email, password},
         {withCredentials: true}
       );

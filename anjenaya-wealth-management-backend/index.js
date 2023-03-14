@@ -1,5 +1,4 @@
 import express from 'express';
-import session from 'express-session';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import * as dotenv from "dotenv";
@@ -13,23 +12,10 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cors({
     origin:['http://localhost:3000', 'https://thriving-fenglisu-1c4304.netlify.app'],
-    default: 'http://localhost:3000',
     credentials: true
 }))
 app.use(cookieParser())
 app.set("trust proxy", 1);
-app.use(
-    session({
-        resave: false,
-        saveUninitialized: false,
-        secret: 'session',
-        cookie: {
-            maxAge: 1000 * 60 * 60,
-            sameSite: "none",
-            secure: true
-        },
-    })
-);
 
 const PORT = process.env.PORT || 5000;
 

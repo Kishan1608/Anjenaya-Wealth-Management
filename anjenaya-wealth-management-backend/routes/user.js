@@ -42,7 +42,16 @@ router.post('/register', async( req, res ) => {
             id: savedUser._id
         }, process.env.JWT_SECRET);
 
-        res.cookie("token", token, {httpOnly: true}).send();
+        res.cookie("token", token,{httpOnly: true, 
+            sameSite: process.env.NODE_ENV === "development"
+                ? "lax" 
+                : process.env.NODE_ENV === "production" 
+                && "none", 
+            secure: process.env.NODE_ENV === "development"
+                ? false 
+                : process.env.NODE_ENV === "production"
+                && true
+        }).send();
         
     } catch (err) {
         res.status(500).json({error: err});
@@ -73,7 +82,17 @@ router.post('/login', async(req, res) => {
             id: user._id
         }, process.env.JWT_SECRET);
 
-        res.cookie("token", token,{httpOnly: true}).send();
+        res.cookie("token", token,{
+            httpOnly: true, 
+            sameSite: process.env.NODE_ENV === "development"
+                ? "lax" 
+                : process.env.NODE_ENV === "production" 
+                && "none", 
+            secure: process.env.NODE_ENV === "development"
+                ? false 
+                : process.env.NODE_ENV === "production"
+                && true
+        }).send();
     } catch (error) {
         console.log(error);
     }
@@ -97,7 +116,18 @@ router.get('/loggedIn', async(req, res) => {
 
 router.get("/logout", async(req,res) => {
     try {
-        res.clearCookie("token").send();
+        res.cookie("token", "", {
+            httpOnly: true, 
+            sameSite: process.env.NODE_ENV === "development"
+                ? "lax" 
+                : process.env.NODE_ENV === "production" 
+                && "none", 
+            secure: process.env.NODE_ENV === "development"
+                ? false 
+                : process.env.NODE_ENV === "production"
+                && true,
+            expires: new Date(0)
+        }).send();
     } catch (error) {
         return res.json(null)
     }

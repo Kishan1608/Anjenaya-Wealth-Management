@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {BsEyeFill,BsEyeSlashFill} from 'react-icons/bs';
 import UserContext from '../../context/UserContextProvider';
+import domain from '../../util/domain';
 
 const Login = () => {
   let navigate = useNavigate();
@@ -18,8 +19,6 @@ const Login = () => {
   const {email, password, error} = user;
 
   const {getUser} = useContext(UserContext);
-
-  const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 
   function handleChange(e){
     const{ name, value } = e.target;
@@ -40,7 +39,7 @@ const Login = () => {
     try {
       setUser({ ...user, error: null})
       await axios.post(
-        `${API_ENDPOINT}/auth/login`,
+        `${domain}/auth/login`,
         {email,password},
         {withCredentials: true}
       );
