@@ -76,6 +76,7 @@ const Testimonials = () => {
 
   useEffect(() => {
     getReviews();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
   async function handleDelete(id) {
