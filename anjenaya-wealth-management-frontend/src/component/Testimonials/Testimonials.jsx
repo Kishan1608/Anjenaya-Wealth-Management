@@ -76,18 +76,18 @@ const Testimonials = () => {
 
   useEffect(() => {
     getReviews();
-  });
+  },[]);
 
-  const handleDelete = async(id) => {
+  async function handleDelete(id) {
     try {
       await axios.delete(`${domain}/review/delete/${id}`);
-      setNote({...note, name:"",review:"", dlt: "Review Deleted Successfully"});
+      setNote({ ...note, name: "", review: "", dlt: "Review Deleted Successfully" });
       window.location.reload();
     } catch (error) {
       setNote({
         ...note,
         error: error.response.data.error
-      })
+      });
     }
   }
 
