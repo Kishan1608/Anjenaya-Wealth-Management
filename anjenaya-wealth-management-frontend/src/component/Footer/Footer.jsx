@@ -16,7 +16,7 @@ const Footer = () => {
         <a href='#home' target={'_blank'} rel='noreferrer'><BsTwitter /></a>
       </div>
       <div className="copyright">
-        &#169; Anjenaya Wealth Management | Website designed by <a href='https://www.linkedin.com/in/kishan-chauhan-a7420a212/' target={'_blank'} rel='noreferrer'>Kishan Chauhan</a>
+        &#169; Anjenaya Wealth Management
       </div>
     </div> 
   )
