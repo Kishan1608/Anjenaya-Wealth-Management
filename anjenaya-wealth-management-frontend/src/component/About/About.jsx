@@ -7,7 +7,7 @@ const About = () => {
         <section id="about">
             <h1 className="about_header">Who we are</h1>
             
-            <h4 className="about_subheader">Welcome to ANJENAYA WEALTH MANAGEMENT, where we are dedicated to helping individuals create and grow their personal wealth. <p style={{color: '#d63031', fontWeight:'800'}}> Our Founder and CEO, Mr. Mayank,</p> is a financial planner and investment adviser with years of experience in the industry.</h4>
+            <h4 className="about_subheader">Welcome to ANJENAYA WEALTH MANAGEMENT, where we are dedicated to helping individuals create and grow their personal wealth. <p style={{color: '#273c75', fontWeight:'800'}}> Our Founder and CEO, Mr. Mayank,</p> is a financial planner and investment adviser with years of experience in the industry.</h4>
             <div className="about_us">
                 <div className="card">
                     <div className="content">
